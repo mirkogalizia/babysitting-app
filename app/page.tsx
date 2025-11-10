@@ -1,101 +1,103 @@
-// app/page.tsx
 "use client";
-import React from "react";
+import BabysitterSlider from "../components/BabysitterSlider";
+import { useState } from "react";
+
+const faqs = [
+  {
+    question: "Come vengono selezionate le babysitter?",
+    answer: "Le babysitter sono selezionate da un team interno e seguono corsi di formazione specifici prima di entrare nel network.",
+  },
+  {
+    question: "Cosa succede se la mia babysitter non è disponibile?",
+    answer: "La piattaforma assegna automaticamente la persona più adatta tra quelle disponibili, garantendo continuità.",
+  },
+  {
+    question: "Come posso prenotare?",
+    answer: "Accedi al calendario, seleziona giorno e fascia oraria, esprimi le tue preferenze: il sistema fa il resto.",
+  },
+  {
+    question: "Come funziona il pagamento?",
+    answer: "Gestione pagamenti e ricevute direttamente dalla web app, nessuna burocrazia.",
+  },
+];
 
 export default function Home() {
+  const [open, setOpen] = useState<number | null>(null);
   return (
-    <main className="min-h-screen bg-gradient-to-br from-pink-50 via-blue-50 to-purple-100 flex flex-col items-center justify-center px-4 py-8">
-      <div className="w-full max-w-3xl bg-white/90 rounded-3xl shadow-2xl p-10 flex flex-col gap-10 border border-blue-50">
-        
-        {/* Hero & Headline */}
+    <main className="min-h-screen bg-gradient-to-br from-pastelPink via-pastelBlue to-pastelPurple flex flex-col items-center px-4 py-8 font-sans">
+      {/* Hero */}
+      <div className="w-full max-w-3xl bg-white/90 rounded-3xl shadow-2xl p-10 mb-12 flex flex-col gap-8 border border-blue-50">
         <header className="flex flex-col items-center gap-2 mb-4">
-          <h1 className="text-4xl font-black text-blue-600 tracking-tight text-center drop-shadow-lg leading-tight">
-            La Babysitter giusta, sempre quando serve
+          <h1 className="text-5xl font-extrabold text-blue-600 tracking-tight text-center leading-tight drop-shadow-lg">
+            Babysitter professionali, sempre disponibili
           </h1>
-          <p className="text-base text-gray-500 text-center font-medium max-w-xl">
-            Servizio affidabile, professionale e gestito: Babysitter selezionate, pronte a coprire ogni esigenza, anche nei momenti imprevisti. Nessun contatto diretto: 
-            <span className="font-semibold text-purple-600">la piattaforma garantisce selezione, formazione e sostituzione immediata.</span>
+          <p className="text-lg text-gray-600 text-center font-medium max-w-xl mt-4">
+            La nostra piattaforma seleziona, forma e gestisce il team di babysitter per la tua famiglia. Prenota in pochi click, ricevi assistenza e continuità: 
+            <span className="font-semibold text-purple-600">la sicurezza che meriti, ogni giorno.</span>
           </p>
         </header>
-
-        {/* Sezioni Informative */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="flex flex-col items-center bg-pink-100 rounded-2xl p-6 shadow hover:scale-105 transition">
-            <span className="text-pink-500 text-xl font-extrabold">Team selezionato</span>
-            <ul className="text-sm text-gray-600 list-disc mt-3 pl-4">
-              <li>Tutte le babysitter vengono intervistate e formate con corsi appositi.</li>
-              <li>Controlli costanti e aggiornamenti professionali.</li>
-              <li>Esperienza verificata e feedback reali.</li>
-            </ul>
+        {/* Vantaggi cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+          <div className="bg-pastelBlue rounded-2xl shadow p-6 flex flex-col items-center">
+            <span className="font-bold text-blue-700 text-xl mb-2">Team certificato</span>
+            <span className="text-gray-700 text-center">Selezione interna e formazione per babysitter di qualità, con feedback e aggiornamenti continui.</span>
           </div>
-          <div className="flex flex-col items-center bg-blue-100 rounded-2xl p-6 shadow hover:scale-105 transition">
-            <span className="text-blue-500 text-xl font-extrabold">Prenotazione flessibile</span>
-            <ul className="text-sm text-gray-600 list-disc mt-3 pl-4">
-              <li>Seleziona giorno e orario in pochi click dal calendario interattivo.</li>
-              <li>Indica le tue priorità: avrai sempre la babysitter disponibile più adatta.</li>
-              <li>Gestione delle urgenze e coperture rapide.</li>
-            </ul>
+          <div className="bg-pastelPink rounded-2xl shadow p-6 flex flex-col items-center">
+            <span className="font-bold text-pink-700 text-xl mb-2">Prenotazione facile</span>
+            <span className="text-gray-700 text-center">Calendario smart e preferenze: scegli giorno, orario e la piattaforma fa tutto per te.</span>
           </div>
-          <div className="flex flex-col items-center bg-purple-100 rounded-2xl p-6 shadow hover:scale-105 transition">
-            <span className="text-purple-500 text-xl font-extrabold">Sostituzione garantita</span>
-            <ul className="text-sm text-gray-600 list-disc mt-3 pl-4">
-              <li>In caso di problemi, la piattaforma assegna subito una sostituta di pari livello.</li>
-              <li>Supporto 24/7 del team amministrativo.</li>
-            </ul>
+          <div className="bg-pastelTeal rounded-2xl shadow p-6 flex flex-col items-center">
+            <span className="font-bold text-teal-700 text-xl mb-2">Sostituzione garantita</span>
+            <span className="text-gray-700 text-center">In caso di imprevisto, il sistema assegna subito una sostituita qualificata e aggiornata.</span>
           </div>
-          <div className="flex flex-col items-center bg-teal-100 rounded-2xl p-6 shadow hover:scale-105 transition">
-            <span className="text-teal-500 text-xl font-extrabold">Gestione centralizzata</span>
-            <ul className="text-sm text-gray-600 list-disc mt-3 pl-4">
-              <li>Tutto tramite web app mobile-first, facile e veloce.</li>
-              <li>Pagamenti e notifiche integrate.</li>
-              <li>Assistenza rapida e chat privata con l'amministrazione.</li>
-            </ul>
+          <div className="bg-pastelPurple rounded-2xl shadow p-6 flex flex-col items-center">
+            <span className="font-bold text-purple-700 text-xl mb-2">Supporto smart</span>
+            <span className="text-gray-700 text-center">Gestione online, pagamenti e assistenza tutto da web app. Nessuna burocrazia, solo servizio.</span>
+          </div>
+        </div>
+        {/* Vetrina slider babysitter */}
+        <BabysitterSlider />
+        {/* Testimonial */}
+        <div className="mt-8 mb-4 p-6 bg-white rounded-2xl border border-pastelBlue shadow flex flex-col items-center gap-3">
+          <h2 className="text-xl font-extrabold text-purple-600">Cosa dicono le famiglie:</h2>
+          <p className="italic text-gray-600 text-center">“Il servizio mi ha salvato più volte in emergenza. Babysitter sempre preparate, assistenza rapida, esperienza da consigliare a tutte le mamme!”</p>
+          <span className="text-sm text-blue-600 font-bold">— Sara B., Milano</span>
+        </div>
+        {/* FAQ interattiva */}
+        <section className="mt-10">
+          <h2 className="text-2xl font-bold text-blue-600 text-center mb-6">Domande frequenti</h2>
+          <div className="space-y-3">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="bg-pastelPurple rounded-xl shadow p-4">
+                <button
+                  className="w-full text-left font-semibold text-purple-700 text-lg"
+                  onClick={() => setOpen(open === idx ? null : idx)}
+                >
+                  {faq.question}
+                </button>
+                {open === idx && (
+                  <div className="mt-2 text-gray-700 text-base px-2">{faq.answer}</div>
+                )}
+              </div>
+            ))}
           </div>
         </section>
-
-        {/* Perché scegliere noi */}
-        <section className="bg-white rounded-2xl p-8 shadow-md border border-purple-50">
-          <h2 className="text-2xl font-bold text-purple-600 text-center mb-3 tracking-wide">
-            Perché scegliere Babysitting App?
-          </h2>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-700 font-medium">
-            <li>
-              <span className="font-semibold text-blue-500">Più sicurezza: </span>
-              Il servizio non fa solo matching, ma si occupa della selezione, formazione e gestione di ogni babysitter.
-            </li>
-            <li>
-              <span className="font-semibold text-pink-500">Zero imprevisti: </span>
-              La continuità è garantita da sostituzioni rapide in caso di assenza.
-            </li>
-            <li>
-              <span className="font-semibold text-teal-500">Esperienza semplificata: </span>
-              Prenotazione, pagamenti e gestione tutto in un’unica piattaforma mobile.
-            </li>
-            <li>
-              <span className="font-semibold text-purple-500">Supporto costante: </span>
-              Un team dedicato sempre al tuo fianco, per ogni dubbio e necessità.
-            </li>
-          </ul>
-        </section>
-        
-        {/* Call to Action / Faq */}
-        <section className="flex flex-col items-center gap-4 mt-4">
+        {/* CTA */}
+        <div className="mt-12 text-center">
           <a
-            href="/signup"
+            href="/contattaci"
             className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white font-bold py-4 px-10 rounded-2xl shadow-xl text-lg hover:brightness-110 transition duration-200"
           >
-            Richiedi una Demo Gratuita
+            Richiedi una demo gratuita
           </a>
-          <div className="text-sm text-gray-600 text-center max-w-lg">
-            Vuoi sapere di più? Consulta la <a href="/faq" className="text-blue-600 underline hover:text-purple-600">pagina FAQ</a> oppure <a href="/contatti" className="text-pink-600 underline hover:text-purple-600">contattaci</a> senza impegno.
-          </div>
-        </section>
-        
+          <div className="mt-2 text-gray-600 text-sm">Vuoi collaborare? <a href="/lavora-con-noi" className="text-blue-700 underline hover:text-pink-500">Scopri le opportunità</a></div>
+        </div>
         {/* Footer */}
         <footer className="text-xs text-gray-400 mt-8 text-center font-medium">
-          &copy; 2025 Babysitting App • Garantiamo professionalità, sicurezza e assistenza.  
+          &copy; 2025 Babysitting App • Sicurezza, continuità, serenità sempre garantite.
         </footer>
       </div>
     </main>
   );
 }
+
