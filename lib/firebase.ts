@@ -1,18 +1,19 @@
-// lib/firebase.ts
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+// Import analytics SOLO se ti serve davvero e solo lato client.
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCHdbhYu-7RPjnAZareKwFZlk26O807myk",
-  authDomain: "babysitting-app-3b53d.firebaseapp.com",
-  projectId: "babysitting-app-3b53d",
-  storageBucket: "babysitting-app-3b53d.appspot.com",
-  messagingSenderId: "525398638033",
-  appId: "1:525398638033:web:9a91cffa6321e449b374f0",
-  measurementId: "G-NQQE4ZT5K9"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app); // puoi usarlo quando vuoi
-export const auth = getAuth(app); // per autenticazione utenti
+export const auth = getAuth(app);
+// NON esportare analytics qui!
+
+// Se vuoi usare analytics, fallo in un file separato/client-side a partire dal componente React.
